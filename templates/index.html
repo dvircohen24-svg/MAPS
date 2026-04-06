@@ -10,7 +10,7 @@
   <style>
     :root {
       --cream: #f6f2ec;
-      --cream2: #ede7dd; [cite: 75]
+      --cream2: #ede7dd;
       --cream3: #d8cfc2;
       --teal: #26796c;
       --teal2: #1a5a50;
@@ -19,83 +19,83 @@
       --ink2: #3c3830;
       --ink3: #6a6258;
       --gold: #c4a270;
-      --sh: 0 4px 20px rgba(26,23,20,.06); [cite: 76]
+      --sh: 0 4px 20px rgba(26,23,20,.06);
       --sh2: 0 8px 30px rgba(26,23,20,.12);
-    } [cite: 77]
+    }
     
-    * { box-sizing: border-box; font-family: "Heebo", sans-serif; } [cite: 78]
-    body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); display: flex; height: 100vh; overflow: hidden; } [cite: 79]
+    * { box-sizing: border-box; font-family: "Heebo", sans-serif; }
+    body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); display: flex; height: 100vh; overflow: hidden; }
     
     /* Layout */
-   .sidebar { width: 50%; display: flex; flex-direction: column; background: var(--cream); box-shadow: 10px 0 30px rgba(0,0,0,0.05); z-index: 10; } [cite: 80]
-   .map-panel { width: 50%; position: relative; z-index: 1; background: #e5e3df; } [cite: 81]
-    #map-container { width: 100%; height: 100%; } [cite: 82]
+   .sidebar { width: 50%; display: flex; flex-direction: column; background: var(--cream); box-shadow: 10px 0 30px rgba(0,0,0,0.05); z-index: 10; }
+   .map-panel { width: 50%; position: relative; z-index: 1; background: #e5e3df; }
+    #map-container { width: 100%; height: 100%; }
 
     /* Topbar & Header */
-   .topbar { padding: 30px 40px 20px; flex-shrink: 0; } [cite: 83]
-   .breadcrumbs { font-size: 13px; font-weight: 700; color: var(--teal); letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; } [cite: 84]
+   .topbar { padding: 30px 40px 20px; flex-shrink: 0; }
+   .breadcrumbs { font-size: 13px; font-weight: 700; color: var(--teal); letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
    .breadcrumbs span { color: var(--ink3); margin: 0 5px; }
-   .page-title { font-size: 34px; font-weight: 900; margin: 0 0 5px 0; color: var(--ink); } [cite: 85]
-   .page-subtitle { font-size: 16px; font-weight: 500; color: var(--ink2); margin: 0; } [cite: 86]
+   .page-title { font-size: 34px; font-weight: 900; margin: 0 0 5px 0; color: var(--ink); }
+   .page-subtitle { font-size: 16px; font-weight: 500; color: var(--ink2); margin: 0; }
 
     /* Tabs */
-   .tabs-container { padding: 0 40px; display: flex; gap: 10px; margin-top: 20px; border-bottom: 2px solid var(--cream2); flex-shrink: 0; } [cite: 87]
-   .tab { background: none; border: none; padding: 12px 24px; font-family: "Heebo"; font-size: 16px; font-weight: 800; color: var(--ink3); cursor: pointer; border-bottom: 3px solid transparent; transition: 0.2s; } [cite: 88, 89]
+   .tabs-container { padding: 0 40px; display: flex; gap: 10px; margin-top: 20px; border-bottom: 2px solid var(--cream2); flex-shrink: 0; }
+   .tab { background: none; border: none; padding: 12px 24px; font-family: "Heebo"; font-size: 16px; font-weight: 800; color: var(--ink3); cursor: pointer; border-bottom: 3px solid transparent; transition: 0.2s; }
    .tab:hover { color: var(--ink); }
-   .tab.active { color: var(--teal); border-bottom-color: var(--teal); } [cite: 90]
+   .tab.active { color: var(--teal); border-bottom-color: var(--teal); }
 
     /* Filters */
-   .filters { padding: 20px 40px; display: flex; gap: 10px; flex-shrink: 0; overflow-x: auto; } [cite: 91]
-   .filter-pill { background: var(--cream2); color: var(--ink2); padding: 8px 16px; border-radius: 99px; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; border: none; font-family: "Heebo"; } [cite: 92]
-   .filter-pill:hover { background: var(--cream3); } [cite: 93]
+   .filters { padding: 20px 40px; display: flex; gap: 10px; flex-shrink: 0; overflow-x: auto; }
+   .filter-pill { background: var(--cream2); color: var(--ink2); padding: 8px 16px; border-radius: 99px; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; border: none; font-family: "Heebo"; }
+   .filter-pill:hover { background: var(--cream3); }
    .filter-pill.active { background: var(--teal); color: white; }
 
     /* Hotel List */
-   .hotel-list { flex: 1; overflow-y: auto; padding: 10px 40px 40px; } [cite: 94]
+   .hotel-list { flex: 1; overflow-y: auto; padding: 10px 40px 40px; }
     
     /* Hotel Card */
-   .card { background: #fff; border-radius: 20px; margin-bottom: 25px; box-shadow: var(--sh); overflow: hidden; transition: 0.3s; border: 2px solid transparent; display: flex; flex-direction: column; } [cite: 95, 96]
-   .card:hover { transform: translateY(-4px); box-shadow: var(--sh2); border-color: rgba(38,121,108,0.2); } [cite: 97]
+   .card { background: #fff; border-radius: 20px; margin-bottom: 25px; box-shadow: var(--sh); overflow: hidden; transition: 0.3s; border: 2px solid transparent; display: flex; flex-direction: column; }
+   .card:hover { transform: translateY(-4px); box-shadow: var(--sh2); border-color: rgba(38,121,108,0.2); }
     
-   .card-img { position: relative; height: 240px; } [cite: 98]
+   .card-img { position: relative; height: 240px; }
    .card-img img { width: 100%; height: 100%; object-fit: cover; }
-   .badge { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; color: var(--ink); box-shadow: var(--sh); } [cite: 99, 100]
+   .badge { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; color: var(--ink); box-shadow: var(--sh); }
    .badge.non-ref { background: rgba(26,23,20,0.8); color: white; }
-   .wishlist-btn { position: absolute; top: 16px; left: 16px; width: 40px; height: 40px; border-radius: 50%; background: rgba(26,23,20,0.4); border: none; color: white; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: 0.2s; } [cite: 101, 102]
-   .wishlist-btn:hover { background: rgba(26,23,20,0.6); transform: scale(1.05); } [cite: 103]
+   .wishlist-btn { position: absolute; top: 16px; left: 16px; width: 40px; height: 40px; border-radius: 50%; background: rgba(26,23,20,0.4); border: none; color: white; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: 0.2s; }
+   .wishlist-btn:hover { background: rgba(26,23,20,0.6); transform: scale(1.05); }
    .wishlist-btn.saved { background: var(--teal); color: white; }
 
-   .card-body { padding: 24px; } [cite: 104]
+   .card-body { padding: 24px; }
    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-   .card-title-area { flex: 1; padding-left: 15px; } [cite: 105]
-   .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 8px; } [cite: 106]
-   .card-title { font-size: 22px; font-weight: 900; margin: 0 0 4px 0; color: var(--ink); line-height: 1.2; } [cite: 107]
-   .card-location { font-size: 14px; color: var(--ink3); font-weight: 500; } [cite: 108]
+   .card-title-area { flex: 1; padding-left: 15px; }
+   .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 8px; }
+   .card-title { font-size: 22px; font-weight: 900; margin: 0 0 4px 0; color: var(--ink); line-height: 1.2; }
+   .card-location { font-size: 14px; color: var(--ink3); font-weight: 500; }
     
    .card-price-area { text-align: left; }
-   .price { font-size: 28px; font-weight: 900; color: var(--teal); line-height: 1; } [cite: 109]
-   .per-night { font-size: 13px; color: var(--ink3); font-weight: 500; margin-top: 4px; } [cite: 110]
+   .price { font-size: 28px; font-weight: 900; color: var(--teal); line-height: 1; }
+   .per-night { font-size: 13px; color: var(--ink3); font-weight: 500; margin-top: 4px; }
 
-   .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--cream2); padding-top: 20px; } [cite: 111]
+   .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--cream2); padding-top: 20px; }
    .rating-wrap { display: flex; align-items: center; gap: 12px; }
-   .score { background: var(--teal); color: white; padding: 6px 10px; border-radius: 8px; font-weight: 900; font-size: 15px; } [cite: 112]
-   .rating-text { font-size: 14px; font-weight: 700; color: var(--ink); } [cite: 113]
-   .rating-text span { font-weight: 500; color: var(--ink3); margin-right: 5px; } [cite: 114]
+   .score { background: var(--teal); color: white; padding: 6px 10px; border-radius: 8px; font-weight: 900; font-size: 15px; }
+   .rating-text { font-size: 14px; font-weight: 700; color: var(--ink); }
+   .rating-text span { font-weight: 500; color: var(--ink3); margin-right: 5px; }
     
-   .book-link { color: var(--teal); font-weight: 800; font-size: 15px; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: 0.2s; cursor: pointer;} [cite: 115]
-   .book-link:hover { color: var(--teal2); } [cite: 116]
+   .book-link { color: var(--teal); font-weight: 800; font-size: 15px; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: 0.2s; cursor: pointer;}
+   .book-link:hover { color: var(--teal2); }
 
     /* Map Markers */
-   .leaflet-div-icon { background: transparent; border: none; } [cite: 117]
-   .price-marker { background: #fff; color: var(--ink); font-weight: 900; font-size: 14px; padding: 8px 14px; border-radius: 20px; text-align: center; box-shadow: var(--sh2); border: 2px solid transparent; position: relative; transition: 0.2s; } [cite: 118]
-   .price-marker::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border-width: 6px 6px 0; border-style: solid; border-color: #fff transparent transparent transparent; transition: 0.2s; } [cite: 119, 120]
-   .price-marker.active,.price-marker:hover { background: var(--teal); color: #fff; border-color: #fff; transform: scale(1.1); z-index: 1000; } [cite: 121]
-   .price-marker.active::after,.price-marker:hover::after { border-color: var(--teal) transparent transparent transparent; } [cite: 122]
+   .leaflet-div-icon { background: transparent; border: none; }
+   .price-marker { background: #fff; color: var(--ink); font-weight: 900; font-size: 14px; padding: 8px 14px; border-radius: 20px; text-align: center; box-shadow: var(--sh2); border: 2px solid transparent; position: relative; transition: 0.2s; }
+   .price-marker::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border-width: 6px 6px 0; border-style: solid; border-color: #fff transparent transparent transparent; transition: 0.2s; }
+   .price-marker.active,.price-marker:hover { background: var(--teal); color: #fff; border-color: #fff; transform: scale(1.1); z-index: 1000; }
+   .price-marker.active::after,.price-marker:hover::after { border-color: var(--teal) transparent transparent transparent; }
 
     /* Scrollbar */
-    ::-webkit-scrollbar { width: 8px; } [cite: 123]
+    ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--cream3); border-radius: 4px; } [cite: 124]
+    ::-webkit-scrollbar-thumb { background: var(--cream3); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--ink3); }
 
   </style>
@@ -118,7 +118,8 @@
       <button class="filter-pill">מתאים לילדים</button>
     </div>
 
-    <div class="hotel-list" id="hotel-list"> [cite: 125]
+  
+    <div class="hotel-list" id="hotel-list">
     </div>
   </div>
 
@@ -128,78 +129,111 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const destinations = {{ destinations | tojson }}; [cite: 126]
+    // הנתונים שהוזרקו משרת הפייתון (ה-URL)
+    const destinations = {{ destinations | tojson }};
     const currentGroupType = "{{ group_type }}";
-    const currentTravelStyle = "{{ travel_style }}"; [cite: 127]
+    const currentTravelStyle = "{{ travel_style }}";
 
-    const mapLocations = { [cite: 127]
-      'khaoyai': { name: 'קאו יאי', center: [14.5300, 101.4000], zoom: 12 }, [cite: 128]
-      'khaosok': { name: 'קאו סוק', center: [8.9100, 98.5250], zoom: 13 }, [cite: 129]
-      'rome': { name: 'רומא', center: [41.9028, 12.4964], zoom: 13 }, [cite: 129]
-      'tuscany': { name: 'טוסקנה', center: [43.7711, 11.2486], zoom: 10 } [cite: 130]
+    // בסיס נתוני דמה רחב יותר שתומך ביעדים שהזכרנו, כדי שהעיצוב יעבוד ב-MVP 
+    const mapLocations = {
+      'khaoyai': {
+        name: 'קאו יאי', center: [14.5300, 101.4000], zoom: 12,
+        hotels: [
+          { id: 'ky1', lat: 14.5350, lng: 101.4050, price: 450, freeCancel: true, stars: 4, img: 'https://images.unsplash.com/photo-1566073171639-4d8ef1090117?auto=format&fit=crop&w=800&q=80', name: 'ריזורט טבע קאו יאי', locRating: '9.2', rating: '8.8' },
+          { id: 'ky2', lat: 14.5200, lng: 101.3900, price: 320, freeCancel: false, stars: 3, img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80', name: 'בקתות היער הכחול', locRating: '8.5', rating: '8.2' }
+        ]
+      },
+      'khaosok': {
+        name: 'קאו סוק', center: [8.9100, 98.5250], zoom: 13,
+        hotels: [
+          { id: 'ks1', lat: 8.9150, lng: 98.5300, price: 550, freeCancel: true, stars: 5, img: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=80', name: 'קאו סוק אקו לודג\'', locRating: '9.5', rating: '9.2' }
+        ]
+      },
+      'rome': {
+        name: 'רומא', center: [41.9028, 12.4964], zoom: 13,
+        hotels: [
+           { id: 'rm1', lat: 41.9050, lng: 12.4900, price: 850, freeCancel: true, stars: 5, img: 'https://images.unsplash.com/photo-1551882547-ff40c0d13c85?auto=format&fit=crop&w=800&q=80', name: 'וילה בורגזה פרימיום', locRating: '9.8', rating: '9.5' }
+        ]
+      },
+      'tuscany': {
+        name: 'טוסקנה', center: [43.7711, 11.2486], zoom: 10,
+        hotels: [
+           { id: 'ts1', lat: 43.7700, lng: 11.2500, price: 1200, freeCancel: true, stars: 4, img: 'https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?auto=format&fit=crop&w=800&q=80', name: 'אחוזת הכרמים', locRating: '9.9', rating: '9.7' }
+        ]
+      }
     };
 
-    let map; [cite: 131]
+    let map;
     let markersArray = [];
 
     function initMap() {
-      map = L.map('map-container', { zoomControl: false }); [cite: 131]
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { [cite: 132]
+      map = L.map('map-container', { zoomControl: false });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
       }).addTo(map);
-      L.control.zoom({ position: 'bottomright' }).addTo(map); [cite: 133]
+      L.control.zoom({ position: 'bottomright' }).addTo(map);
       
       buildTabs();
 
+      // טעינת היעד הראשון כברירת מחדל
       if (destinations.length > 0) {
-        switchRegion(destinations[0]); [cite: 134]
+        switchRegion(destinations[0]);
       }
     }
 
     function buildTabs() {
-      const container = document.getElementById('tabs-container'); [cite: 135]
+      const container = document.getElementById('tabs-container');
       container.innerHTML = ''; 
 
       destinations.forEach((destKey, index) => {
         const btn = document.createElement('button');
         btn.className = index === 0 ? 'tab active' : 'tab';
         btn.id = 'tab-' + destKey;
-        btn.innerText = mapLocations[destKey] ? mapLocations[destKey].name : destKey; [cite: 136]
+        
+        // שם ידידותי אם קיים, אחרת מציג את המפתח מה-URL
+        btn.innerText = mapLocations[destKey] ? mapLocations[destKey].name : destKey;
         btn.onclick = () => switchRegion(destKey);
-        container.appendChild(btn); [cite: 137]
+        
+        container.appendChild(btn);
       });
     }
 
     function switchRegion(destKey) {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active')); [cite: 138]
+      // עדכון הטאב הפעיל חזותית
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       const activeTab = document.getElementById('tab-' + destKey);
-      if (activeTab) activeTab.classList.add('active'); [cite: 139]
+      if (activeTab) activeTab.classList.add('active');
 
       loadHotelsForDestination(destKey);
       updatePageTitles(destKey);
     }
 
-    async function loadHotelsForDestination(destKey) { [cite: 140]
-      const regionData = mapLocations[destKey] || { center: [0, 0], zoom: 2, name: destKey }; [cite: 140]
-      map.setView(regionData.center, regionData.zoom); [cite: 141]
+    // הפונקציה המעודכנת למשיכת נתונים מהשרת
+    async function loadHotelsForDestination(destKey) {
+      const regionData = mapLocations[destKey] || { center: [0, 0], zoom: 2, hotels: [], name: destKey };
       
-      markersArray.forEach(m => map.removeLayer(m.marker)); [cite: 142]
+      // עדכון מפה
+      map.setView(regionData.center, regionData.zoom);
+      
+      // ניקוי סמנים ורשימה קודמת
+      markersArray.forEach(m => map.removeLayer(m.marker));
       markersArray = [];
       
       const listEl = document.getElementById('hotel-list');
-      listEl.innerHTML = '<p style="text-align:center; margin-top:40px;">מחפש מלונות אמיתיים בתיאום עם Stay22...</p>'; [cite: 143]
+      listEl.innerHTML = '<p style="text-align:center; margin-top:40px; color:var(--ink3);">מחפש מלונות אמיתיים בתיאום עם Stay22...</p>';
 
       try {
-        const response = await fetch(`/api/hotels?lat=${regionData.center[0]}&lng=${regionData.center[1]}`); [cite: 144]
+        const response = await fetch(`/api/hotels?lat=${regionData.center[0]}&lng=${regionData.center[1]}`);
         const data = await response.json();
 
         if (data.error || !data.results || data.results.length === 0) {
-          throw new Error('לא נמצאו מלונות'); [cite: 145]
+          throw new Error('לא נמצאו מלונות תואמים ביעד זה כרגע.');
         }
 
         listEl.innerHTML = '';
 
-        data.results.forEach(hotel => { [cite: 146]
+        // מיפוי ורינדור של התוצאות האמיתיות
+        data.results.forEach(hotel => {
           const hPrice = hotel.price || 'N/A';
           const hName = hotel.name;
           const hImg = hotel.images && hotel.images.length > 0 ? hotel.images[0] : 'https://via.placeholder.com/400x240';
@@ -207,20 +241,22 @@
           const hStars = hotel.stars || 4;
           const hLat = hotel.location.lat;
           const hLng = hotel.location.lng;
-          const hLink = hotel.url; [cite: 146]
+          const hLink = hotel.url;
 
+          // יצירת סמן
           const icon = L.divIcon({
             className: 'custom-div-icon',
             html: `<div class="price-marker" id="marker-${hotel.id}">₪${hPrice}</div>`,
             iconAnchor: [1, 2]
           });
           const marker = L.marker([hLat, hLng], {icon: icon}).addTo(map);
-          markersArray.push({ id: hotel.id, marker: marker }); [cite: 146]
+          markersArray.push({ id: hotel.id, marker: marker });
 
+          // כרטיסיית HTML
           const cardHtml = `
             <div class="card" onmouseenter="highlightMarker('${hotel.id}')" onmouseleave="resetMarkers()">
               <div class="card-img">
-                <img src="${hImg}" alt="${hName}"> [cite: 147]
+                <img src="${hImg}" alt="${hName}">
                 <div class="badge">זמין להזמנה</div>
                 <button class="wishlist-btn" onclick="toggleWishlist(this, '${hName}')">♡</button>
               </div>
@@ -228,19 +264,19 @@
                 <div class="card-header">
                   <div class="card-title-area">
                     <div class="stars">${'★'.repeat(hStars)}</div>
-                    <h3 class="card-title">${hName}</h3> [cite: 148]
+                    <h3 class="card-title">${hName}</h3>
                   </div>
                   <div class="card-price-area">
                     <div class="price">₪${hPrice}</div>
-                    <div class="per-night">ללילה</div> [cite: 149]
+                    <div class="per-night">ללילה</div>
                   </div>
                 </div>
                 <div class="card-footer">
                   <div class="rating-wrap">
                     <div class="score">${hRating}</div>
-                    <div class="rating-text">דירוג כללי</div> [cite: 150]
+                    <div class="rating-text">דירוג כללי</div>
                   </div>
-                  <div class="book-link" onclick="window.open('${hLink}', '_blank')">הזמן עכשיו ←</div> [cite: 151]
+                  <div class="book-link" onclick="window.open('${hLink}', '_blank')">הזמן עכשיו ←</div>
                 </div>
               </div>
             </div>
@@ -250,37 +286,37 @@
 
       } catch (err) {
         console.error(err);
-        listEl.innerHTML = `<p style="text-align:center; margin-top:40px; color:red;">שגיאה בטעינת נתונים: ${err.message}</p>`;
+        listEl.innerHTML = `<p style="text-align:center; margin-top:40px; color:var(--ink3);">${err.message}</p>`;
       }
     }
 
     function updatePageTitles(destKey) {
       const titleEl = document.querySelector('.page-title');
-      const subtitleEl = document.getElementById('dynamic-subtitle'); [cite: 152]
+      const subtitleEl = document.getElementById('dynamic-subtitle');
       
       let groupText = currentGroupType === 'couple' ? 'זוגות' : 'משפחות';
       titleEl.innerText = `מלונות נבחרים ל${groupText}`;
       
-      const destName = mapLocations[destKey] ? mapLocations[destKey].name : destKey; [cite: 153]
-      subtitleEl.innerText = `${destName} • מותאם אישית`; [cite: 154]
+      const destName = mapLocations[destKey] ? mapLocations[destKey].name : destKey;
+      subtitleEl.innerText = `${destName} • מותאם אישית`;
     }
 
     function highlightMarker(hotelId) {
       resetMarkers();
-      const markerEl = document.getElementById('marker-' + hotelId); [cite: 155]
+      const markerEl = document.getElementById('marker-' + hotelId);
       if(markerEl) markerEl.classList.add('active');
     }
 
     function resetMarkers() {
-      document.querySelectorAll('.price-marker').forEach(el => el.classList.remove('active')); [cite: 156]
+      document.querySelectorAll('.price-marker').forEach(el => el.classList.remove('active'));
     }
 
     function toggleWishlist(btn, hotelName) {
-      btn.classList.toggle('saved'); [cite: 157]
+      btn.classList.toggle('saved');
       if(btn.classList.contains('saved')) {
-        btn.innerHTML = '♥'; [cite: 158]
+        btn.innerHTML = '♥';
       } else {
-        btn.innerHTML = '♡'; [cite: 159]
+        btn.innerHTML = '♡';
       }
     }
 
