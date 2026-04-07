@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-# הגדרת מפתח ה-API של Stay22 ממשתני הסביבה
+# הגדרת מפתח ה-API של Stay22 ממשתני הסביבה (ניתן לשנות בשרת בהתאם)
 STAY22_APP_ID = os.environ.get('STAY22_APP_ID', 'your_test_app_id_here')
 
 
@@ -15,7 +15,7 @@ def home():
     תומך בריבוי יעדים דרך פרמטר dests המופרד בפסיקים.
     לדוגמה: /?dests=rome,tuscany&group=couple
     """
-    # קבלת היעדים מה-URL. אם אין, נשתמש בברירת מחדל של קאו יאי וקאו סוק כדי שהמפה לא תהיה ריקה ב-MVP
+    # קבלת היעדים מה-URL. אם אין, נשתמש בברירת מחדל של קאו יאי וקאו סוק
     dests_param = request.args.get('dests', 'khaoyai,khaosok')
 
     # פיצול המחרוזת למערך של יעדים (מנקה רווחים מיותרים)
@@ -34,7 +34,8 @@ def home():
 @app.route('/api/hotels')
 def get_hotels():
     """
-    נתיב זה מקבל בקשות מהמפה שלנו, מעביר ל-Stay22 ומחזיר JSON.
+    נתיב זה מקבל בקשות מתוך מפת ה-Leaflet שלנו, 
+    שואב את הנתונים בזמן אמת מ-Stay22, ומחזיר JSON ללקוח.
     """
     lat = request.args.get('lat', default=14.5300, type=float)
     lng = request.args.get('lng', default=101.4000, type=float)
@@ -62,4 +63,5 @@ def get_hotels():
 
 
 if __name__ == '__main__':
+    # מפעיל את השרת בסביבת פיתוח
     app.run(debug=True)
