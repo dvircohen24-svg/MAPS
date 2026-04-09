@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>בחירת מלונות </title>
+  <title>בחירת מלונות - פרימיום ריטריטס</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   
@@ -38,127 +38,80 @@
       --sh2: 0 8px 30px rgba(26,23,20,.12);
     }
     
-    * { box-sizing: border-box; font-family: "Heebo", sans-serif;
-    }
-    body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); display: flex; height: 100vh; overflow: hidden;
-    }
+    * { box-sizing: border-box; font-family: "Heebo", sans-serif; }
+    body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); display: flex; height: 100vh; overflow: hidden; }
     
     /* Layout */
-   .sidebar { width: 50%; display: flex;
-   flex-direction: column; background: var(--cream); box-shadow: 10px 0 30px rgba(0,0,0,0.05); z-index: 10; }
-   .map-panel { width: 50%; position: relative;
-   z-index: 1; background: #e5e3df; }
-    #map-container { width: 100%; height: 100%;
-    }
+   .sidebar { width: 50%; display: flex; flex-direction: column; background: var(--cream); box-shadow: 10px 0 30px rgba(0,0,0,0.05); z-index: 10; }
+   .map-panel { width: 50%; position: relative; z-index: 1; background: #e5e3df; }
+    #map-container { width: 100%; height: 100%; }
 
     /* Topbar & Header */
-   .topbar { padding: 30px 40px 20px; flex-shrink: 0;
-   }
-   .breadcrumbs { font-size: 13px; font-weight: 700; color: var(--teal); letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase;
-   }
+   .topbar { padding: 30px 40px 20px; flex-shrink: 0; }
+   .breadcrumbs { font-size: 13px; font-weight: 700; color: var(--teal); letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
    .breadcrumbs span { color: var(--ink3); margin: 0 5px; }
-   .page-title { font-size: 34px; font-weight: 900;
-   margin: 0 0 5px 0; color: var(--ink); }
-   .page-subtitle { font-size: 16px; font-weight: 500; color: var(--ink2); margin: 0;
-   }
+   .page-title { font-size: 34px; font-weight: 900; margin: 0 0 5px 0; color: var(--ink); }
+   .page-subtitle { font-size: 16px; font-weight: 500; color: var(--ink2); margin: 0; }
 
     /* Tabs */
-   .tabs-container { padding: 0 40px; display: flex; gap: 10px; margin-top: 20px;
-   border-bottom: 2px solid var(--cream2); flex-shrink: 0; overflow-x: auto;}
-   .tab { background: none; border: none; padding: 12px 24px;
-   font-family: "Heebo"; font-size: 16px; font-weight: 800; color: var(--ink3); cursor: pointer; border-bottom: 3px solid transparent; transition: 0.2s;
-   white-space: nowrap;}
+   .tabs-container { padding: 0 40px; display: flex; gap: 10px; margin-top: 20px; border-bottom: 2px solid var(--cream2); flex-shrink: 0; overflow-x: auto;}
+   .tab { background: none; border: none; padding: 12px 24px; font-family: "Heebo"; font-size: 16px; font-weight: 800; color: var(--ink3); cursor: pointer; border-bottom: 3px solid transparent; transition: 0.2s; white-space: nowrap;}
    .tab:hover { color: var(--ink); }
-   .tab.active { color: var(--teal); border-bottom-color: var(--teal);
-   }
+   .tab.active { color: var(--teal); border-bottom-color: var(--teal); }
 
     /* Filters */
-   .filters { padding: 20px 40px; display: flex; gap: 10px; flex-shrink: 0;
-   overflow-x: auto; }
-   .filter-pill { background: var(--cream2); color: var(--ink2); padding: 8px 16px; border-radius: 99px; font-size: 14px; font-weight: 600;
-   cursor: pointer; transition: 0.2s; border: none; font-family: "Heebo"; white-space: nowrap;}
-   .filter-pill:hover { background: var(--cream3);
-   }
+   .filters { padding: 20px 40px; display: flex; gap: 10px; flex-shrink: 0; overflow-x: auto; }
+   .filter-pill { background: var(--cream2); color: var(--ink2); padding: 8px 16px; border-radius: 99px; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; border: none; font-family: "Heebo"; white-space: nowrap;}
+   .filter-pill:hover { background: var(--cream3); }
    .filter-pill.active { background: var(--teal); color: white; }
 
     /* Hotel List */
-   .hotel-list { flex: 1;
-   overflow-y: auto; padding: 10px 40px 40px; }
+   .hotel-list { flex: 1; overflow-y: auto; padding: 10px 40px 40px; }
     
     /* Hotel Card */
-   .card { background: #fff;
-   border-radius: 20px; margin-bottom: 25px; box-shadow: var(--sh); overflow: hidden; transition: 0.3s; border: 2px solid transparent; display: flex; flex-direction: column;
-   }
-   .card:hover { transform: translateY(-4px); box-shadow: var(--sh2); border-color: rgba(38,121,108,0.2);
-   }
+   .card { background: #fff; border-radius: 20px; margin-bottom: 25px; box-shadow: var(--sh); overflow: hidden; transition: 0.3s; border: 2px solid transparent; display: flex; flex-direction: column; }
+   .card:hover { transform: translateY(-4px); box-shadow: var(--sh2); border-color: rgba(38,121,108,0.2); }
     
-   .card-img { position: relative; height: 240px;
-   }
+   .card-img { position: relative; height: 240px; }
    .card-img img { width: 100%; height: 100%; object-fit: cover; }
-   .badge { position: absolute;
-   top: 16px; right: 16px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; color: var(--ink); box-shadow: var(--sh);
-   }
+   .badge { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; color: var(--ink); box-shadow: var(--sh); }
    .badge.non-ref { background: rgba(26,23,20,0.8); color: white; }
    
-   .wishlist-btn { position: absolute;
-   top: 16px; left: 16px; width: 40px; height: 40px; border-radius: 50%; background: rgba(26,23,20,0.4); border: none; color: white; font-size: 22px; cursor: pointer;
-   display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: 0.2s; }
-   .wishlist-btn:hover { background: rgba(26,23,20,0.6); transform: scale(1.05);
-   }
+   .wishlist-btn { position: absolute; top: 16px; left: 16px; width: 40px; height: 40px; border-radius: 50%; background: rgba(26,23,20,0.4); border: none; color: white; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: 0.2s; }
+   .wishlist-btn:hover { background: rgba(26,23,20,0.6); transform: scale(1.05); }
    .wishlist-btn.saved { background: #e53935; color: white; }
 
-   .card-body { padding: 24px;
-   }
+   .card-body { padding: 24px; }
    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-   .card-title-area { flex: 1;
-   padding-left: 15px; }
-   .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 8px;
-   }
-   .card-title { font-size: 22px; font-weight: 900; margin: 0 0 4px 0; color: var(--ink); line-height: 1.2;
-   }
-   .card-location { font-size: 14px; color: var(--ink3); font-weight: 500;
-   }
+   .card-title-area { flex: 1; padding-left: 15px; }
+   .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 8px; }
+   .card-title { font-size: 22px; font-weight: 900; margin: 0 0 4px 0; color: var(--ink); line-height: 1.2; }
+   .card-location { font-size: 14px; color: var(--ink3); font-weight: 500; }
     
    .card-price-area { text-align: left; }
-   .price { font-size: 28px; font-weight: 900;
-   color: var(--teal); line-height: 1; }
-   .per-night { font-size: 13px; color: var(--ink3); font-weight: 500; margin-top: 4px;
-   }
+   .price { font-size: 28px; font-weight: 900; color: var(--teal); line-height: 1; }
+   .per-night { font-size: 13px; color: var(--ink3); font-weight: 500; margin-top: 4px; }
 
-   .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--cream2); padding-top: 20px;
-   }
+   .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--cream2); padding-top: 20px; }
    .rating-wrap { display: flex; align-items: center; gap: 12px; }
-   .score { background: var(--teal); color: white;
-   padding: 6px 10px; border-radius: 8px; font-weight: 900; font-size: 15px; }
-   .rating-text { font-size: 14px; font-weight: 700; color: var(--ink);
-   }
-   .rating-text span { font-weight: 500; color: var(--ink3); margin-right: 5px;
-   }
+   .score { background: var(--teal); color: white; padding: 6px 10px; border-radius: 8px; font-weight: 900; font-size: 15px; }
+   .rating-text { font-size: 14px; font-weight: 700; color: var(--ink); }
+   .rating-text span { font-weight: 500; color: var(--ink3); margin-right: 5px; }
     
-   .book-link { color: var(--teal); font-weight: 800; font-size: 15px; text-decoration: none; display: flex;
-   align-items: center; gap: 5px; transition: 0.2s; cursor: pointer;}
-   .book-link:hover { color: var(--teal2);
-   }
+   .book-link { color: var(--teal); font-weight: 800; font-size: 15px; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: 0.2s; cursor: pointer;}
+   .book-link:hover { color: var(--teal2); }
 
     /* Map Markers */
-   .leaflet-div-icon { background: transparent; border: none;
-   }
-   .price-marker { background: #fff; color: var(--ink); font-weight: 900; font-size: 14px; padding: 8px 14px; border-radius: 20px; text-align: center;
-   box-shadow: var(--sh2); border: 2px solid transparent; position: relative; transition: 0.2s; }
-   .price-marker::after { content: ''; position: absolute;
-   bottom: -6px; left: 50%; transform: translateX(-50%); border-width: 6px 6px 0; border-style: solid; border-color: #fff transparent transparent transparent; transition: 0.2s;
-   }
-   .price-marker.active,.price-marker:hover { background: var(--teal); color: #fff; border-color: #fff; transform: scale(1.1); z-index: 1000;
-   }
-   .price-marker.active::after,.price-marker:hover::after { border-color: var(--teal) transparent transparent transparent;
-   }
+   .leaflet-div-icon { background: transparent; border: none; }
+   .price-marker { background: #fff; color: var(--ink); font-weight: 900; font-size: 14px; padding: 8px 14px; border-radius: 20px; text-align: center; box-shadow: var(--sh2); border: 2px solid transparent; position: relative; transition: 0.2s; }
+   .price-marker::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border-width: 6px 6px 0; border-style: solid; border-color: #fff transparent transparent transparent; transition: 0.2s; }
+   .price-marker.active,.price-marker:hover { background: var(--teal); color: #fff; border-color: #fff; transform: scale(1.1); z-index: 1000; }
+   .price-marker.active::after,.price-marker:hover::after { border-color: var(--teal) transparent transparent transparent; }
 
     /* Scrollbar */
-    ::-webkit-scrollbar { width: 8px;
-    height: 8px;}
+    ::-webkit-scrollbar { width: 8px; height: 8px;}
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--cream3); border-radius: 4px;
-    }
+    ::-webkit-scrollbar-thumb { background: var(--cream3); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--ink3); }
 
     /* Wishlist Floating Button */
@@ -199,16 +152,11 @@
     }
 
     @media (max-width: 768px) {
-      body { flex-direction: column-reverse; overflow: auto;
-      height: auto;}
-      .sidebar { width: 100%; box-shadow: none;
-      overflow: visible;}
-      .map-panel { width: 100%; height: 40vh;
-      }
-      .topbar, .tabs-container, .filters, .hotel-list { padding-left: 20px; padding-right: 20px;
-      }
-      .wishlist-floating { bottom: 20px; right: 20px; padding: 12px 20px;
-      font-size: 14px;}
+      body { flex-direction: column-reverse; overflow: auto; height: auto;}
+      .sidebar { width: 100%; box-shadow: none; overflow: visible;}
+      .map-panel { width: 100%; height: 40vh; }
+      .topbar, .tabs-container, .filters, .hotel-list { padding-left: 20px; padding-right: 20px; }
+      .wishlist-floating { bottom: 20px; right: 20px; padding: 12px 20px; font-size: 14px;}
     }
   </style>
 </head>
@@ -249,22 +197,22 @@
     const destinations = {{ destinations | tojson }};
     const currentGroupType = "{{ group_type }}";
     const currentTravelStyle = "{{ travel_style }}";
-
-    // --- שליפת הפרמטרים החדשים מה-URL ---
+    
+    // --- שליפת פרמטרי החיפוש מתוך שורת הכתובת (URL) ---
     const urlParams = new URLSearchParams(window.location.search);
     const userCheckIn = urlParams.get('checkin');
     const userCheckOut = urlParams.get('checkout');
     const userGuests = urlParams.get('guests');
     const userRooms = urlParams.get('rooms');
     const userCurrency = urlParams.get('currency') || 'USD';
-    // ------------------------------------
 
+    // מילון היעדים עם מזהי העיר (destId) הרשמיים של בוקינג
     const mapLocations = {
       'khaoyai': { name: 'קאו יאי', center: [14.5300, 101.4000], zoom: 12 },
       'khaosok': { name: 'קאו סוק', center: [8.9100, 98.5250], zoom: 13 },
-      'rome': { name: 'רומא', center: [41.9028, 12.4964], zoom: 13 },
-      'newyork': { name: 'ניו יורק', center: [40.7128, -74.0060], zoom: 12 },
-      'tuscany': { name: 'טוסקנה', center: [43.7711, 11.2486], zoom: 10 }
+      'rome': { name: 'רומא', center: [41.9028, 12.4964], zoom: 13, destId: '-126693' },
+      'tuscany': { name: 'טוסקנה', center: [43.7711, 11.2486], zoom: 10 },
+      'newyork': { name: 'ניו יורק', center: [40.7128, -74.0060], zoom: 12, destId: '20088325' }
     };
 
     let map;
@@ -323,9 +271,12 @@
       listEl.innerHTML = '<p style="text-align:center; margin-top:40px; color:var(--ink3);">מחפש מלונות אמיתיים בזמן אמת...</p>';
 
       try {
-        // --- הרכבת בקשת ה-Fetch עם כל הפרמטרים החדשים ---
+        // --- בניית הכתובת הדינמית לשרת ---
         let apiUrl = `/api/hotels?lat=${regionData.center[0]}&lng=${regionData.center[1]}&currency=${userCurrency}`;
         
+        if (regionData.destId) {
+            apiUrl += `&dest_id=${regionData.destId}`;
+        }
         if (userCheckIn && userCheckOut) {
             apiUrl += `&checkin=${userCheckIn}&checkout=${userCheckOut}`;
         }
@@ -335,10 +286,9 @@
         if (userRooms) {
             apiUrl += `&rooms=${userRooms}`;
         }
-        
+
         const response = await fetch(apiUrl);
         const data = await response.json();
-        // ------------------------------------------------
 
         if (data.error || !data.results || data.results.length === 0) {
           throw new Error('לא נמצאו מלונות תואמים ביעד זה כרגע. בדקו שוב מאוחר יותר.');
@@ -346,48 +296,64 @@
 
         listEl.innerHTML = '';
 
-        // יצירת הכרטיסיות מתוך נתוני ה-API
+        // יצירת הכרטיסיות מתוך נתוני ה-API (של בוקינג)
         data.results.forEach(hotel => {
-          // משיכת נתונים בטוחה (גם אם משהו חסר מה-API)
-          const hPrice = hotel.price || (hotel.rate && hotel.rate.amount) || '---';
-          const hName = hotel.name || 'מלון נבחר';
-          const hImg = (hotel.images && hotel.images.length > 0) ? hotel.images[0] : 'https://images.unsplash.com/photo-1566073171639-4d8ef1090117?auto=format&fit=crop&w=800&q=80';
-          const hRating = hotel.rating || hotel.guest_rating || '8.5';
-          const hStars = hotel.star_rating || hotel.stars || 4;
-          const hLat = hotel.location ? hotel.location.lat : hotel.lat;
-          const hLng = hotel.location ? hotel.location.lng : hotel.lng;
-          const hLink = hotel.url || '#';
+          // מזהה המלון
+          const hotelId = hotel.hotel_id || hotel.id;
+          
+          // חילוץ נתונים
+          const hName = hotel.hotel_name || hotel.name || 'מלון נבחר';
+          const hImg = hotel.main_photo_url || ((hotel.images && hotel.images.length > 0) ? hotel.images[0] : 'https://images.unsplash.com/photo-1566073171639-4d8ef1090117?auto=format&fit=crop&w=800&q=80');
+          const hRating = hotel.review_score || hotel.rating || hotel.guest_rating || '8.5';
+          const hStars = hotel.class || hotel.star_rating || hotel.stars || 4;
+          const hLat = hotel.latitude || (hotel.location ? hotel.location.lat : null);
+          const hLng = hotel.longitude || (hotel.location ? hotel.location.lng : null);
+          
+          // חילוץ המחיר
+          let hPrice = '---';
+          if (hotel.composite_price_breakdown && hotel.composite_price_breakdown.gross_amount_per_night) {
+             hPrice = Math.round(hotel.composite_price_breakdown.gross_amount_per_night.value);
+          } else if (hotel.price) {
+             hPrice = hotel.price;
+          }
 
-          // בדיקה האם המלון כבר שמור כדי לצבוע את הלב
-          const isSaved = wishlist.some(item => item.id === String(hotel.id));
+          // יצירת קישור ה-Affiliate של Stay22
+          const rawBookingUrl = hotel.url || '#';
+          const stay22AppId = '69d4fe25e9e6102453a4f8cf'; // מזהה ה-LetMeAllez
+          let affiliateLink = rawBookingUrl;
+          if (rawBookingUrl !== '#') {
+             affiliateLink = `https://www.stay22.com/allez?aid=${stay22AppId}&link=${encodeURIComponent(rawBookingUrl)}`;
+          }
+
+          // בדיקה האם המלון כבר שמור
+          const isSaved = wishlist.some(item => String(item.id) === String(hotelId));
           const heartClass = isSaved ? 'saved' : '';
           const heartChar = isSaved ? '♥' : '♡';
 
           // הכנת מחרוזות בטוחות ל-HTML
           const safeName = hName.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
           const safeImg = hImg.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
-          const safeLink = hLink.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
+          const safeLink = affiliateLink.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
 
-          // הצגת המטבע בממשק (תמיכה במטבע הנבחר או בברירת מחדל)
           const currencySymbol = userCurrency === 'USD' ? '$' : (userCurrency === 'EUR' ? '€' : '₪');
 
           const icon = L.divIcon({
             className: 'custom-div-icon',
-            html: `<div class="price-marker" id="marker-${hotel.id}">${currencySymbol}${hPrice}</div>`,
+            html: `<div class="price-marker" id="marker-${hotelId}">${currencySymbol}${hPrice}</div>`,
             iconAnchor: [1, 2]
           });
           
           if(hLat && hLng) {
             const marker = L.marker([hLat, hLng], {icon: icon}).addTo(map);
-            markersArray.push({ id: hotel.id, marker: marker });
+            markersArray.push({ id: hotelId, marker: marker });
           }
 
           const cardHtml = `
-            <div class="card" onmouseenter="highlightMarker('${hotel.id}')" onmouseleave="resetMarkers()">
+            <div class="card" onmouseenter="highlightMarker('${hotelId}')" onmouseleave="resetMarkers()">
               <div class="card-img">
                 <img src="${hImg}" alt="${hName}">
                 <div class="badge">זמין להזמנה</div>
-                <button class="wishlist-btn ${heartClass}" onclick="toggleWishlist(this, '${hotel.id}', '${safeName}', '${safeImg}', '${hPrice}', '${safeLink}')">${heartChar}</button>
+                <button class="wishlist-btn ${heartClass}" onclick="toggleWishlist(this, '${hotelId}', '${safeName}', '${safeImg}', '${hPrice}', '${safeLink}')">${heartChar}</button>
               </div>
               <div class="card-body">
                 <div class="card-header">
@@ -405,7 +371,7 @@
                     <div class="score">${hRating}</div>
                     <div class="rating-text">דירוג גולשים</div>
                   </div>
-                  <a href="${hLink}" target="_blank" class="book-link">הזמן עכשיו ←</a>
+                  <a href="${affiliateLink}" target="_blank" class="book-link">הזמן עכשיו ←</a>
                 </div>
             </div>
             </div>
@@ -440,7 +406,7 @@
 
     // פונקציית Wishlist
     function toggleWishlist(btn, id, name, img, price, link) {
-      const index = wishlist.findIndex(item => item.id === id);
+      const index = wishlist.findIndex(item => String(item.id) === String(id));
       if (index === -1) {
         // הוספה לרשימה
         wishlist.push({ id, name, img, price, link });
