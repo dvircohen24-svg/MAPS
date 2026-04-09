@@ -4,8 +4,10 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-# הגדרת מפתח ה-API של Stay22 ממשתני הסביבה (ניתן לשנות בשרת בהתאם)
-STAY22_APP_ID = os.environ.get('STAY22_APP_ID', 'your_test_app_id_here')
+# הגדרות מפתחות עבור RapidAPI ממשתני הסביבה (יש לעדכן בהתאם לחשבון שלך)
+RAPIDAPI_KEY = os.environ.get('RAPIDAPI_KEY', 'your_rapidapi_key_here')
+RAPIDAPI_HOST = os.environ.get('RAPIDAPI_HOST', 'booking-com.p.rapidapi.com')
+RAPIDAPI_URL = os.environ.get('RAPIDAPI_URL', 'https://booking-com.p.rapidapi.com/v1/hotels/search')
 
 
 @app.route('/')
@@ -35,49 +37,64 @@ def home():
 def get_hotels():
     """
     נתיב זה מקבל בקשות מתוך מפת ה-Leaflet שלנו, 
-    שואב את הנתונים בזמן אמת מ-Stay22, ומחזיר JSON ללקוח.
+    שואב את הנתונים בזמן אמת מ-RapidAPI, ומחזיר JSON ללקוח.
     """
+    # מיקום
     lat = request.args.get('lat', default=14.5300, type=float)
     lng = request.args.get('lng', default=101.4000, type=float)
+    dest_id = request.args.get('dest_id') # מזהה העיר הרשמי במידה ונשלח מהלקוח
     
-    # קבלת התאריכים הספציפיים של המשתמש
+    # תאריכים והרכב
     checkin = request.args.get('checkin')
     checkout = request.args.get('checkout')
-
-    # פרמטרים חדשים להרכב ומטבע
     guests = request.args.get('guests', type=int)
     rooms = request.args.get('rooms', type=int)
-    currency = request.args.get('currency', default='USD') # דולר כברירת מחדל
+    currency = request.args.get('currency', default='USD')
 
-    stay22_url = "https://api.stay22.com/v3/search"
+    headers = {
+        "X-RapidAPI-Key": RAPIDAPI_KEY,
+        "X-RapidAPI-Host": RAPIDAPI_HOST
+    }
 
     params = {
-        'appid': STAY22_APP_ID,
-        'lat': lat,
-        'lng': lng,
-        'currency': currency
+        'currency': currency,
+        'locale': 'en-gb'
     }
     
-    # הוספת התאריכים וההרכב לבקשה ל-Stay22 במידה וסופקו
+    # אם יש מזהה עיר (dest_id), נשתמש בו. אחרת, נשתמש בקואורדינטות.
+    if dest_id:
+        params['dest_id'] = dest_id
+        params['search_type'] = 'city' # חלק מה-APIs דורשים את השדה הזה בשם dest_type
+    else:
+        params['latitude'] = lat
+        params['longitude'] = lng
+
+    # הוספת התאריכים וההרכב (השמות כאן מותאמים ל-Booking API דרך RapidAPI)
     if checkin:
-        params['checkin'] = checkin
+        params['checkin_date'] = checkin
     if checkout:
-        params['checkout'] = checkout
+        params['checkout_date'] = checkout
     if guests:
-        params['guests'] = guests
+        params['adults_number'] = guests
     if rooms:
-        params['rooms'] = rooms
+        params['room_number'] = rooms
 
     try:
-        response = requests.get(stay22_url, params=params, timeout=15)
+        response = requests.get(RAPIDAPI_URL, headers=headers, params=params, timeout=15)
         response.raise_for_status()
         data = response.json()
+        
+        # נרמול נתונים: ה-API של בוקינג לרוב מחזיר את המערך תחת 'result'
+        # אנחנו משנים את זה ל-'results' כדי שקוד הלקוח שלנו לא יצטרך להשתנות
+        if 'result' in data and 'results' not in data:
+            data['results'] = data.pop('result')
+            
         return jsonify(data)
 
     except requests.exceptions.RequestException as e:
-        print(f"Error fetching data from Stay22: {e}")
+        print(f"Error fetching data from RapidAPI: {e}")
         return jsonify({
-            'error': 'Failed to fetch hotels from Stay22',
+            'error': 'Failed to fetch hotels from RapidAPI',
             'details': str(e)
         }), 500
 
