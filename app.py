@@ -44,19 +44,29 @@ def get_hotels():
     checkin = request.args.get('checkin')
     checkout = request.args.get('checkout')
 
+    # פרמטרים חדשים להרכב ומטבע
+    guests = request.args.get('guests', type=int)
+    rooms = request.args.get('rooms', type=int)
+    currency = request.args.get('currency', default='USD') # דולר כברירת מחדל
+
     stay22_url = "https://api.stay22.com/v3/search"
 
     params = {
         'appid': STAY22_APP_ID,
         'lat': lat,
         'lng': lng,
+        'currency': currency
     }
     
-    # הוספת התאריכים לבקשה ל-Stay22 במידה וסופקו
+    # הוספת התאריכים וההרכב לבקשה ל-Stay22 במידה וסופקו
     if checkin:
         params['checkin'] = checkin
     if checkout:
         params['checkout'] = checkout
+    if guests:
+        params['guests'] = guests
+    if rooms:
+        params['rooms'] = rooms
 
     try:
         response = requests.get(stay22_url, params=params, timeout=15)
