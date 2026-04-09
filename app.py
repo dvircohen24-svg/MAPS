@@ -39,6 +39,10 @@ def get_hotels():
     """
     lat = request.args.get('lat', default=14.5300, type=float)
     lng = request.args.get('lng', default=101.4000, type=float)
+    
+    # קבלת התאריכים הספציפיים של המשתמש
+    checkin = request.args.get('checkin')
+    checkout = request.args.get('checkout')
 
     stay22_url = "https://api.stay22.com/v3/search"
 
@@ -47,6 +51,12 @@ def get_hotels():
         'lat': lat,
         'lng': lng,
     }
+    
+    # הוספת התאריכים לבקשה ל-Stay22 במידה וסופקו
+    if checkin:
+        params['checkin'] = checkin
+    if checkout:
+        params['checkout'] = checkout
 
     try:
         response = requests.get(stay22_url, params=params, timeout=15)
