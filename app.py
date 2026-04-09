@@ -42,7 +42,7 @@ def get_hotels():
     # מיקום
     lat = request.args.get('lat', default=14.5300, type=float)
     lng = request.args.get('lng', default=101.4000, type=float)
-    dest_id = request.args.get('dest_id') # מזהה העיר הרשמי במידה ונשלח מהלקוח
+    dest_id = request.args.get('dest_id')
     
     # תאריכים והרכב
     checkin = request.args.get('checkin')
@@ -56,36 +56,40 @@ def get_hotels():
         "X-RapidAPI-Host": RAPIDAPI_HOST
     }
 
+    # פרמטרים בסיסיים
+    # חלק מה-APIs משתמשים ב-'filter_by_currency' במקום 'currency'
     params = {
-        'currency': currency,
+        'currency': currency, 
         'locale': 'en-gb'
     }
     
-    # אם יש מזהה עיר (dest_id), נשתמש בו. אחרת, נשתמש בקואורדינטות.
+    # בחירת מיקום
     if dest_id:
         params['dest_id'] = dest_id
-        params['search_type'] = 'city' # חלק מה-APIs דורשים את השדה הזה בשם dest_type
+        params['dest_type'] = 'city' # תוקן מ-search_type ל-dest_type
     else:
         params['latitude'] = lat
         params['longitude'] = lng
 
-    # הוספת התאריכים וההרכב (השמות כאן מותאמים ל-Booking API דרך RapidAPI)
+    # תאריכים
     if checkin:
         params['checkin_date'] = checkin
     if checkout:
         params['checkout_date'] = checkout
+        
+    # הרכב אורחים וחדרים
     if guests:
         params['adults_number'] = guests
-    if rooms:
-        params['room_number'] = rooms
+        
+    # בוקינג כמעט תמיד דורשים חדר 1 כמינימום, לכן נגדיר ברירת מחדל אם חסר
+    params['room_number'] = rooms if rooms else 1
 
     try:
         response = requests.get(RAPIDAPI_URL, headers=headers, params=params, timeout=15)
         response.raise_for_status()
         data = response.json()
         
-        # נרמול נתונים: ה-API של בוקינג לרוב מחזיר את המערך תחת 'result'
-        # אנחנו משנים את זה ל-'results' כדי שקוד הלקוח שלנו לא יצטרך להשתנות
+        # נרמול נתונים למערך 'results'
         if 'result' in data and 'results' not in data:
             data['results'] = data.pop('result')
             
